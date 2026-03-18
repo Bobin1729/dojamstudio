@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dojam</title>
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: #fff;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        .product-img {
+            width: 100%;
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+        .product-info {
+            padding: 20px;
+        }
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            color: #ff4757;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .buy-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #2f3542;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .buy-btn:hover {
+            background: #57606f;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to My Market</h1>
+    <p>뭐하지...</p>
+</header>
+
+<div class="container">
+    <div class="product-card">
+        <div class="product-img">사진 준비중</div>
+        <div class="product-info">
+            <div class="product-name">상품 준비중</div>
+            <div class="product-price">-원</div>
+            <a href="https://open.kakao.com/o/s4VDs5li" class="buy-btn">구매 문의하기</a>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="product-img">사진 준비중</div>
+        <div class="product-info">
+            <div class="product-name">상품 준비중</div>
+            <div class="product-price">-원</div>
+            <a href="https://open.kakao.com/o/s4VDs5li" class="buy-btn">구매 문의하기</a>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="product-img">사진 준비중</div>
+        <div class="product-info">
+            <div class="product-name">상품 준비중</div>
+            <div class="product-price">-원</div>
+            <a href="https://open.kakao.com/o/s4VDs5li" class="buy-btn">구매 문의하기</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
