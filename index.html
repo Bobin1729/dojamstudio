@@ -3,181 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bobin shop</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Sans+KR:wght@300;500&display=swap" rel="stylesheet">
+    <title>Bobin Icecream Factory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #ffffff;
             margin: 0;
             padding: 0;
-            color: #333;
-            overflow-x: hidden; /* 메뉴가 나올 때 가로 스크롤 방지 */
+            /* 스케치 느낌의 시원한 배경 그라데이션 */
+            background: linear-gradient(180deg, #e0f2ff 0%, #4facfe 100%);
+            min-height: 100vh;
+            font-family: 'Nanum Pen Script', cursive;
+            color: #2c3e50;
         }
 
-        /* 헤더 */
         header {
+            padding: 40px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 25px 40px;
-            background: #fff;
+            align-items: flex-start;
         }
 
         .logo {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.8rem;
-            letter-spacing: -1px;
-            color: #000;
+            font-family: 'Fredoka One', cursive;
+            color: #7a9cff;
+            line-height: 1;
+            text-shadow: 2px 2px 0px white;
         }
 
-        .menu-btn {
-            text-align: center;
-            cursor: pointer;
-            z-index: 1001; /* 메뉴창보다 위에 표시 */
-        }
+        .logo h1 { margin: 0; font-size: 4rem; }
+        .logo p { margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
 
-        .menu-btn span {
-            display: block;
-            font-size: 1.8rem;
-            line-height: 0.8;
-            margin-bottom: 5px;
-        }
-
-        .divider {
-            height: 5px;
-            background-color: #000;
-            margin: 0 25px;
-        }
-
-        /* --- 사이드 메뉴 스타일 --- */
-        .side-menu {
-            position: fixed;
-            top: 0;
-            right: -300px; /* 처음에는 화면 밖에 숨김 */
-            width: 280px;
-            height: 100%;
-            background-color: #c9ad93; /* 스케치의 갈색톤 */
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            transition: right 0.4s ease; /* 자연스러운 움직임 */
-            z-index: 1000;
-            padding: 40px 30px;
-            box-sizing: border-box;
-            border-radius: 20px 0 0 20px; /* 스케치 느낌의 둥근 모서리 */
-        }
-
-        .side-menu.active {
-            right: 0; /* 활성화 시 화면 안으로 들어옴 */
-        }
-
-        .side-menu h2 {
-            font-family: 'Dancing Script', cursive;
+        .menu-icon {
             font-size: 2.5rem;
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 10px;
+            cursor: pointer;
         }
 
-        .side-menu a {
-            display: block;
-            text-decoration: none;
-            color: #333;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        /* 배경 어둡게 처리 (메뉴 열렸을 때) */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.3);
-            display: none;
-            z-index: 999;
-        }
-
-        .overlay.active {
-            display: block;
-        }
-
-        /* 상품 그리드 */
         .container {
-            max-width: 1200px;
-            margin: 50px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 60px 30px;
-            padding: 0 25px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 100px;
         }
 
-        .product-card { text-align: left; }
-        .product-img {
+        /* 아이스크림 아이템 공통 스타일 */
+        .icecream-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: -20px; /* 지그재그를 위해 살짝 겹침 */
             width: 100%;
-            aspect-ratio: 1 / 1;
-            background-color: #fdf5d7;
-            border-radius: 4px;
+        }
+
+        /* 홀수 번째: 사진 왼쪽, 이름 오른쪽 */
+        .icecream-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        /* 짝수 번째: 이름 왼쪽, 사진 오른쪽 (스케치 반영) */
+        .icecream-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .circle-img {
+            width: 250px;
+            height: 250px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 8px solid #b5caff;
+            border-radius: 50%; /* 동그라미 */
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            color: #aaa;
-            border: 1px solid #f0e8c8;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            z-index: 2;
         }
 
-        .product-name { font-size: 1rem; font-weight: 500; margin-bottom: 8px; }
-        .buy-link {
-            text-decoration: none; color: #000; font-size: 0.85rem;
-            border-bottom: 1px solid #000; padding-bottom: 2px;
+        .circle-img:hover {
+            transform: scale(1.1) rotate(5deg);
         }
+
+        .name-tag {
+            font-size: 2.5rem;
+            padding: 0 40px;
+            z-index: 1;
+        }
+
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">Bobin Shop</div>
-    <div class="menu-btn" onclick="toggleMenu()">
-        <span>≡</span>
-        메뉴
+    <div class="logo">
+        <h1>Bobin</h1>
+        <p>AND THE<br>ICECREAM FACTORY</p>
     </div>
+    <div class="menu-icon">≡</div>
 </header>
 
-<div class="divider"></div>
-
-<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-<div class="side-menu" id="sideMenu">
-    <h2>Menu</h2>
-    <a href="#">고객센터</a>
-    <a href="#">마이페이지</a>
-    <a href="#">장바구니</a>
-</div>
-
-<div class="container" id="product-list"></div>
+<div class="container" id="factory-list">
+    </div>
 
 <script>
-    // 메뉴 열고 닫기 함수
-    function toggleMenu() {
-        const menu = document.getElementById('sideMenu');
-        const overlay = document.getElementById('overlay');
-        menu.classList.toggle('active');
-        overlay.classList.toggle('active');
-    }
+    const container = document.getElementById('factory-list');
+    const flavors = [
+        "바닐라 구름", "딸기 솜사탕", "민트 초코칩", "초코 폭포", 
+        "피스타치오 숲", "망고 샤베트", "쿠키앤크림", "블루베리 요정",
+        "레몬 톡톡", "아몬드 봉봉"
+    ];
 
-    // 상품 15개 생성
-    const container = document.getElementById('product-list');
-    for (let i = 1; i <= 15; i++) {
-        container.innerHTML += `
-            <div class="product-card">
-                <div class="product-img">Bobin Item ${i}</div>
-                <div class="product-info">
-                    <div class="product-name">보빈 상품 No.${i}</div>
-                    <a href="https://open.kakao.com/o/sNV7n6li" class="buy-link">구매 문의하기</a>
-                </div>
-            </div>
+    flavors.forEach((name, index) => {
+        const item = document.createElement('div');
+        item.className = 'icecream-item';
+        
+        item.innerHTML = `
+            <div class="circle-img">아이스크림 사진</div>
+            <div class="name-tag">${name}</div>
         `;
-    }
+        
+        container.appendChild(item);
+    });
 </script>
 
 </body>
